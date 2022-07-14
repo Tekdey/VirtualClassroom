@@ -1,2 +1,0 @@
-# Clone slippers
-interesting website

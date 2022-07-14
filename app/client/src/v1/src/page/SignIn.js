@@ -63,7 +63,7 @@ const SignIn = () => {
               type="password"
             />
           )}
-          <FormButton handleSubmit={handleSubmit} />
+          <FormButton handleSubmit={handleSubmit}>Suivant</FormButton>
           <p
             onClick={() => setForgetPassword((prevState) => !prevState)}
             className="flex justify-center items-center gap-2 text-slate-500 font-semibold cursor-pointer"
