@@ -26,7 +26,7 @@ const Input = ({id,name, type, placeholder, label, style}) => {
   )
 }
 
-Input.prototype = {
+Input.PropType = {
     id: PropType.string,
     name: PropType.string,
     type: PropType.string,
