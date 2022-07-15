@@ -4,12 +4,13 @@ import UserAvatar from "./component/logo/UserAvatar";
 import MenuButton from "./component/menu/MenuButton";
 import NavbarMenu from "./component/menu/NavbarMenu";
 import SettingDropDownMenu from "./component/menu/SettingDropDownMenu";
+import Classroom from "./page/Classroom";
 import Home from "./page/Home";
 import SignIn from "./page/SignIn";
 
 const App = () => {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <NavbarMenu>
         <div className="flex flex-col items-center justify-around w-full gap-10">
           <UserAvatar src="/assets/image/default_user.png" />
@@ -24,6 +25,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth/" element={<SignIn />} />
+        <Route path="/live/:id" element={<Classroom />} />
       </Routes>
     </div>
   );
