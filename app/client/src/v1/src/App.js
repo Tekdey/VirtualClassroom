@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import UserAvatar from "./component/logo/UserAvatar";
 import MenuButton from "./component/menu/MenuButton";
@@ -7,12 +7,13 @@ import SettingDropDownMenu from "./component/menu/SettingDropDownMenu";
 import Classroom from "./page/Classroom";
 import Home from "./page/Home";
 import SignIn from "./page/SignIn";
+import AuthenticatedRoute from "./utils/AuthenticatedRoute";
 
 const App = () => {
   const location = useLocation();
 
   return (
-    <div className={location.pathname !== "/auth" && "flex h-screen"}>
+    <div className={location.pathname !== "/auth" ? "flex h-screen" : ""}>
       {location.pathname !== "/auth" && (
         <NavbarMenu>
           <div className="flex flex-col items-center justify-around w-full gap-10">
@@ -27,9 +28,12 @@ const App = () => {
         </NavbarMenu>
       )}
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/auth/" element={<SignIn />} />
-        <Route path="/live/:id" element={<Classroom />} />
+
+        <Route element={<AuthenticatedRoute />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/live/:id" element={<Classroom />} />
+        </Route>
       </Routes>
     </div>
   );

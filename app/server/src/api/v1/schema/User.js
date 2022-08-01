@@ -4,7 +4,7 @@ const { Schema, SchemaTypes } = mongoose;
 const userSchema = new Schema({
   role: {
     type: SchemaTypes.String,
-    default: 'User',
+    default: "User",
     enum: {
       values: ["User", "Admin"],
     },
@@ -12,33 +12,33 @@ const userSchema = new Schema({
   username: {
     type: SchemaTypes.String,
     unique: true,
-    required: [true, "Username cannot be empty"]
+    required: [true, "Username cannot be empty"],
   },
   first_name: {
     type: SchemaTypes.String,
     trim: true,
-    required: [true, "First name cannot be empty"]
+    required: [true, "First name cannot be empty"],
   },
   last_name: {
     type: SchemaTypes.String,
     trim: true,
-    required: [true, "Last name cannot be empty"]
+    required: [true, "Last name cannot be empty"],
   },
   password: {
     type: SchemaTypes.String,
-    required: [true, "Password cannot be empty"]
+    required: [true, "Password cannot be empty"],
   },
   comments: [
-      {
-        type: SchemaTypes.ObjectId,
-        ref: 'Comment'
-      }
+    {
+      type: SchemaTypes.ObjectId,
+      ref: "Comment",
+    },
   ],
   subscription: [
-      {
-        type: SchemaTypes.ObjectId,
-        ref: 'User'
-      }
+    {
+      type: SchemaTypes.ObjectId,
+      ref: "User",
+    },
   ],
   contact: {
     type: SchemaTypes.Object,
@@ -46,7 +46,7 @@ const userSchema = new Schema({
       type: SchemaTypes.String,
       trim: true,
       unique: true,
-      required: [true, "Email cannot be empty"]
+      required: [true, "Email cannot be empty"],
     },
     phone_number: {
       type: SchemaTypes.String,

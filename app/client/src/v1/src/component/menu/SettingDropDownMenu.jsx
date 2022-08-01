@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const SettingDropDownMenu = ({children}) => {
 
-    const [isActive, setIsActive] = useState()
+    const [isActive, setIsActive] = useState(false)
 
   return (
     <ul className='flex flex-col gap-1 items-center justify-center w-full'>

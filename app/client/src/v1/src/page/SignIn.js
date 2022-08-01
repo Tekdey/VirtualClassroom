@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import {useNavigate} from "react-router-dom"
 import Input from "../component/form/input/Input";
 import FormButton from "../component/form/button/FormButton";
 import Logo from "../component/logo/Logo";
 import { useState } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 import { SignInFormContext } from "../utils/context/SignInFormContext";
+import {login} from "../api";
 
 const INITIAL_STATE = {
   email: "",
@@ -15,10 +17,19 @@ const SignIn = () => {
   const [forgetPassword, setForgetPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formError, setFormError] = useState(null);
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate()
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // send to the api
+
+    const response = await login(formData)
+    if(response.status === 200){
+      return navigate('/')
+    }else{
+      setFormError(response.message.response.data)
+    }
   };
 
   const propObj = {
@@ -41,6 +52,7 @@ const SignIn = () => {
                 ? "Se connecter"
                 : "Réinitialiser le mot de passe"}
             </h3>
+            {formError && formError}
             {forgetPassword && (
               <h5 className="font-bold text-base text-center text-slate-500 pt-4">
                 Veuillez indiquer l'adresse mail associée à votre compte
